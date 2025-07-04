@@ -1,7 +1,6 @@
-# Les bons tutos
+# Kubernetes
 
-Une collection de tutoriels autour de la conteneurisation.  
-Les contributions (questions, corrections, compléments ...) sont les bienvenues, n'hésitez pas à créer une issue ou à ouvrir une pull request :+1:
+Découverte et prise en main de Kubernetes
 
 ## Conteneurisation
 

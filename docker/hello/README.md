@@ -37,7 +37,9 @@ Status: Downloaded newer image for hello-world:latest
 
 Hello from Docker!
 [...]
-```
+```  
+
+Félicitations ! Le "Hello from Docker!" a été généré par un processus tournant dans une bulle, isolée de tout le reste du système et des autres bulles.  
 
 `docker run` permet de lancer un conteneur à partir d'une image.  
 Si l'image n'existe pas localement (ie elle n'a jamais été utilisée / téléchargée sur la machine locale), `Docker` va directement la télécharger depuis le registre central d'image : [Dockerhub](https://hub.docker.com/).
