@@ -108,10 +108,33 @@ aboutit à l'erreur `You must specify POSTGRES_PASSWORD`.
 Mais
 
 ```
-docker run -e POSTGRES_PASSWORD=mdpsecret
+docker run -e POSTGRES_PASSWORD=mdpsecret postgres
 ```
 
-fonctionne. La variable d'environnement `POSTGRES_PASSWORD` du conteneur sera égale à `mdpsecret`.
+fonctionne. La variable d'environnement `POSTGRES_PASSWORD` du conteneur sera égale à `mdpsecret`.  
+
+## Persistance : volumes  
+
+Par défaut, le système de fichiers du conteneur correspond au filesystem de l'image c'est à dire de l'ensemble des fichiers de l'image (on parle de filesystem en couche car les images sont décomposées en succession de couches correspondant à chacune des étapes de sa création).  
+Toute modification / ajout /suppression de fichier pendant la vie du conteneur (au runtime) est reporté dans une couche supplémentaire dont la durée de vie est liée à celle du conteneur.  
+Du coup, quand le conteneur s'arrête (fin du process, crash, reboot de la machine ...), la couche correspond à ces modifications est supprimée et tout est perdu.   
+C'est très pratique pour la reproductibilité, la portabilité et le testing mais, pour certaines données (e.g les données d'un postgres), on a envie de les faire persister d'un lancement à un autre.  
+
+En conteneurisation il existe le concept de **volumes** qui correspondent à des points de montage du système de fichiers du conteneur qui ne seront pas concernés par le filesystem en couche présenté précédemment.  
+Donc, pour un volume :
+  * On ne tient pas compte des fichiers éventuellement déjà présents dans l'image 
+  * Les lectures ne passent pas par le filesystem en couche (gain possible en performance)
+  * L'endroit / la façon dont les lectures / écritures sont faites in-fine dépendent du type de volume (espace temporaire, point de montage du système hôte, partage réseau, espace mémoire ...)
+
+En Docker, les volumes correspondent à des points de montage entre le conteneur et le système hôte.  
+Exemple :  
+
+```
+docker run -e POSTGRES_PASSWORD=mdpsecret -v /home/moi/data:/var/lib/postgresql/data postgres
+```  
+
+Pour ce conteneur postgres, le filesystem sera constitué du filesystem d'un postgres classique SAUF pour le dossier `/var/lib/postgresql/data` qui correspondra à un montage (read / write) du `/home/moi/data` du système hôte.  
+Toute lecture dans `/var/lib/postgresql/data` correspondra à une lecture sur le `/home/moi/data` du système hôte et toute écriture dans `/var/lib/postgresql/data` correspondra à une écriture physique sur le `/home/moi/data` de l'hôte.  
 
 ## Aller plus loin
 
