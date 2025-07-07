@@ -1,4 +1,7 @@
-# Mon premier cluster Kubernetes
+# Obtenir un cluster Kubernetes
+
+Il existe différentes façons d'obtenir un cluster Kubernetes.  
+Du cluster mononoeud sur son pc portable au cluster multi-noeuds physiques on-premise en passant par un cluster de VM managé chez un cloud provider il existe une multitude de façon d'obtenir un cluster Kubernetes.
 
 ## Prérequis
 
@@ -17,8 +20,6 @@ Dans le premier cas on parle d'installation `on-premise`, dans le second on parl
 A noter : on parle souvent de `cloud-native` pour qualifier les technologies modernes dont Kubernetes. Le fait d'être une technologie `cloud-native` ne veut pas dire qu'il s'agit d'une technologie disponible uniquement chez un cloud provider, c'est un faux ami !  
 Vocabulaire : les offres Kubernetes des cloud providers sont en général "clé en main", le cloud provider s'occupe d'installer et configurer l'installation de base du cluster. Les `controlplanes` et les `etcd` sont mutualisés et optimisés, seuls les workers sont "visibles". Le cloud provider facture en général uniquement la puissance des workers et, pour certains, un frais fixe de gestion. On parle de cluster `managé`.
 
-## Les distributions
-
 ## On-premise : un cluster à la maison
 
 Kubernetes est un projet opensource regroupant de nombreux composants (controller, scheduler, APIServer, kubelet ...) qui intéragissent ensemble. Bien qu'il soit possible d'installer et configurer manuellement chacun de ces composants, il est général beaucoup plus simple et pratique d'utiliser une distribution Kubernetes.  
@@ -28,8 +29,7 @@ Un peu à l'instar des distributions `linux`, il existe de nombreuses distributi
 
 **[Docker desktop](https://docs.docker.com/desktop/kubernetes/)** : Kubernetes est inclu dans les versions récentes de Docker desktop. Cette distribution n'est cependant adaptée que pour du développement ou du testing, pas pour de la production `The Kubernetes server runs locally within your Docker instance, is not configurable, and is a single-node cluster. It runs within a Docker container on your local system, and is only for local testing.`.  
 **[Minikube](https://minikube.sigs.k8s.io/docs/start/)** : Une distribution locale mono-noeud légère.  
-**[k3s](https://k3s.io/)** : Une distribution légère supportant le multi noeud. Quelques limitations mais, contrairement aux distributions précédentes, on commence à pouvoir envisager de la prod.  
-**[rke](https://github.com/rancher/rke)** : Une distribution légère, multi-noeuds. Désavantage : rke utilise Docker comme runtime engine ce qui en fait un choix peu pérenne pour l'avenir.  
+**[k3s](https://k3s.io/)** : Une distribution légère supportant le multi noeud. Quelques limitations mais, contrairement aux distributions précédentes, on commence à pouvoir envisager de la prod.    
 **[kubespray](https://github.com/kubernetes-sigs/kubespray)** : Une distribution multi-noeuds, production-ready. Cette distribution est basée sur [ansible](https://www.ansible.com/).  
 **[openshift](https://www.redhat.com/en/technologies/cloud-computing/openshift)** : Une distribution mutli-noeuds, production-ready, payante (il existe une version community gratuite, libre mais peu utilisée : https://www.okd.io/). Openshift possède de nombreuses extensions à Kubernetes (ex : le client `oc`, le concept de `routes`, une politique de sécurité plus aggressive ...) ce qui la fait diverger du Kubernetes "standard"
 
@@ -38,8 +38,4 @@ Une fois le cluster installé, la distribution génère en général un fichier 
 ## Cloud : un cluster en location
 
 Tous les grands cloud providers ont une offre Kubernetes managée : `GKE` pour `GCP`, `EKS` pour `AWS`, `AKS` pour `azure` ...  
-La création d'un cluster managé prend en général environ 5 minutes. Une fois le cluster créé, le cloud provider met à disposition en téléchargement (ou via la `CLI` du cloud provider) le fichier `kubeconfig`.
-
-## Aller plus loin
-
-La suite logique à ce tutoriel est l'utilisation d'un cluster Kubernetes : [Hello Kubernetes](../hello).
+La création d'un cluster managé prend en général environ 5 minutes. Une fois le cluster créé, le cloud provider met à disposition en téléchargement (ou via la `CLI` du cloud provider) le fichier `kubeconfig`.  

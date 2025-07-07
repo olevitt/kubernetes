@@ -1,10 +1,4 @@
-# Mon premier cluster Kubernetes
-
-## Prérequis
-
-- [Kesako Kubernetes](../kesako/)
-- [Mon premier cluster](../premiercluster/)
-- [Hello Kubernetes](../hello/)
+# Mon premier déploiement
 
 ## Objectif
 
@@ -16,11 +10,12 @@ A noter : il est tout à fait possible de remplacer Podinfo par n'importe quel a
 
 ### Environnement
 
-En plus d'avoir besoin d'un `kubectl` bien configuré, il est recommandé d'utiliser [vscode](https://code.visualstudio.com/) ainsi que son [plugin kubernetes](https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools) afin de bénéficier de l'autocomplétion, d'un linter et de tout un tas d'autres outils offrant un gain de temps non négligeable.
+En plus d'avoir besoin d'un `kubectl` bien configuré, il est recommandé d'utiliser [vscode](https://code.visualstudio.com/) ainsi que son [plugin kubernetes](https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools) afin de bénéficier de l'autocomplétion, d'un linter et de tout un tas d'autres outils offrant un gain de temps non négligeable.  
+Les IA comme `chatGPT` sont très performantes dans l'écriture et le débug de contrats Kubernetes.
 
 ### Test local de l'image
 
-Bien que ce ne soit pas strictement nécessaire, il est en général bienvenue de tester localement l'image avant de la déployer dans Kubernetes. En particulier, il convient de déterminer le nom de l'image, son port d'écoute (le cas échéant), ses éventuels paramètres de configuration (en particulier les variables d'environnement) et les éventuels chemins à monter en volumes.  
+Bien que ce ne soit pas strictement nécessaire, il est en général bienvenu de tester localement l'image avant de la déployer dans Kubernetes. En particulier, il convient de déterminer le nom de l'image, son port d'écoute (le cas échéant), ses éventuels paramètres de configuration (en particulier les variables d'environnement) et les éventuels chemins à monter en volumes.  
 La [documentation de PodInfo](https://github.com/stefanprodan/podinfo#docker) donne toutes ces informations en une seule ligne :
 
 ```
@@ -164,7 +159,11 @@ podname   1/1     Running   0  11m
 Le pod podname est en bonne santé !
 
 On peut accéder aux logs via la commande `kubectl logs podname`.  
-On peut faire un tunnel réseau entre notre machine et le conteneur : `kubectl port-forward podname 9898:9898`
+
+## Nettoyage  
+
+Pour nettoyer tout ce qui a été créé précedemment, on peut utiliser la commande `kubectl delete`.  
+Soit en supprimant manuellement chaque ressource (`kubectl delete deployment myapp`) soit en référençant les fichiers qui ont servi à la création des ressources (`kubectl delete -f deployment.yaml`)
 
 ## Aller plus loin
 

@@ -1,16 +1,11 @@
-# Mon premier cluster Kubernetes
-
-## Prérequis
-
-- [Kesako Kubernetes](../kesako/)
-- [Mon premier cluster](../premiercluster/)
+# Prise en main d'un cluster
 
 ## Rappel : architecture
 
 ![](img/architecture.png)
 
 Pour interagir avec le cluster, on discute avec l'APIServer.  
-Il s'agit d'une API (webservice), il nous faut donc les choses suivantes :
+Il s'agit d'une API HTTPS (webservice), il nous faut donc les choses suivantes :
 
 - Un client
 - L'URL de l'APIServer
@@ -21,12 +16,11 @@ Toutes ces informations sont en général regroupées au sein d'un fichier `kube
 ## Un client
 
 Bien qu'il soit possible de construire soi-même les requêtes HTTP à envoyer à l'APIServer, il est bien plus simple et efficace d'utiliser un client qui génèrera et exécutera les requêtes pour nous.  
-Le client de référence, en ligne de commande (`CLI`) est [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl). C'est le plus complet et le plus utilisé. Il est écrit en [go](https://go.dev/) et, comme tous les programmes go, il est packagé dans un binaire unique ce qui simplifie son installation : il suffit de télécharger le binaire (`kubectl.exe` sous windows, `kubectl` sous mac / linux) et de le placer dans le `PATH` de votre système d'exploitation.  
+Le client de référence, en ligne de commande (`CLI`), est [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl). C'est le plus complet et le plus utilisé. Il est écrit en [go](https://go.dev/) et, comme tous les programmes go, il est packagé dans un binaire unique ce qui simplifie son installation : il suffit de télécharger le binaire (`kubectl.exe` sous windows, `kubectl` sous mac / linux) et de le placer dans le `PATH` de votre système d'exploitation.  
 Il existe plein d'autres clients pour Kubernetes dont voici quelques exemples :
 
-- [k9s](https://k9scli.io/), un compromis agréable entre un outil `CLI` et un client lourd.
-- [lens](https://k8slens.dev/), un client lourd offrant de multiples fonctionnalités (à noter la version 100% libre [OpenLens](https://github.com/MuhammedKalkan/OpenLens))
-- le [public Kubernetes pour vscode](https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools) qui contient un client très simple en plus de nombreux outils (aide à la complétion, linter ...)
+- [k9s](https://k9scli.io/), un compromis agréable entre un outil `CLI` et un client graphique.
+- le [plugin Kubernetes pour vscode](https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools) qui contient un client très simple en plus de nombreux outils (aide à la complétion, linter ...)
 
 ## URL de l'APIServer
 
@@ -44,9 +38,5 @@ A noter : il est aussi possible sur certaines installation de Kubernetes de bran
 ## Hello Kubernetes
 
 Une fois `kubectl` installé et le fichier `kubeconfig` placé au bon endroit (`~/.kube/config`), il est possible de commencer à communiquer avec le cluster.  
-La commande `kubectl get nodes` permet de tester la bonne installation et renvoit la liste des noeuds avoir leur version. C'est une opération à haut niveau de droits. Dans le cas où le compte utilisé n'a pas de droits élevés, on peut se contenter de `kubectl version`. Si la `Server version` est affichée alors la communication avec l'APIServer est bonne.
-
-## Aller plus loin
-
-La suite logique à ce tutoriel est le déploiement d'une première application sur le cluster : [Mon premier déploiement](../premier-deploiement/).  
+La commande `kubectl get nodes` permet de tester la bonne installation et renvoit la liste des noeuds avec leur version. C'est une opération à haut niveau de droits. Dans le cas où le compte utilisé n'a pas de droits élevés, on peut se contenter de `kubectl version`. Si la `Server version` est affichée alors la communication avec l'APIServer est bonne.
 

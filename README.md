@@ -15,9 +15,10 @@ Découverte et prise en main de Kubernetes
 ## Kubernetes
 
 - [Késako ?](kubernetes/kesako/)
-- [Obtenir un cluster](kubernetes/hello/)
-- [Prise en main d'un cluster](kubernetes/premiercluster/)
-- [Mon premier déploiement]()
+- [Obtenir un cluster](kubernetes/obtenir-un-cluster/)
+- [Prise en main d'un cluster](kubernetes/prise-en-main/)
+- [Mon premier déploiement](kubernetes/premier-deploiement)
+- [Réseau : intro](kubernetes/reseau-intro)
 - [Réseau : exposition intra-cluster]()
 - [Réseau : exposition extra-cluster]()
 - [Persistance des données]()
