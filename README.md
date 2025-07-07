@@ -15,6 +15,17 @@ Découverte et prise en main de Kubernetes
 ## Kubernetes
 
 - [Késako ?](kubernetes/kesako/)
-- [Mon premier cluster Kubernetes](kubernetes/premiercluster/)
-- [Hello Kubernetes](kubernetes/hello/)
-- [Mon premier déploiement](kubernetes/premier-deploiement/)
+- [Obtenir un cluster](kubernetes/hello/)
+- [Prise en main d'un cluster](kubernetes/premiercluster/)
+- [Mon premier déploiement]()
+- [Réseau : exposition intra-cluster]()
+- [Réseau : exposition extra-cluster]()
+- [Persistance des données]()
+
+## Industrialisation
+
+- [Packaging avec Helm]()
+- [Principe du GitOps]()
+- [Implémentation GitOps avec argoCD]()
+
+## Bonus : stockage objet avec S3
