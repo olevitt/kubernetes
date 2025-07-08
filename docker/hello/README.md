@@ -89,8 +89,8 @@ docker run -p 5678:80 nginx
 
 Cette commande va lancer un conteneur `nginx` et faire correspondre le port `5678` de l'hôte avec le port `80` du conteneur.  
 
-[!TIP]  
-Dans toutes les commandes Docker / Kubernetes, quand il faut préciser une information à la fois pour l'hôte et pour le conteneur, on les sépare par `:` et **l'information sur l'hôte est toujours en premier**
+> [!TIP]  
+> Dans toutes les commandes Docker / Kubernetes, quand il faut préciser une information à la fois pour l'hôte et pour > le conteneur, on les sépare par `:` et **l'information sur l'hôte est toujours en premier**
 
 Depuis un autre terminal, vous pouvez vérifier que le nginx répond bien :
 
