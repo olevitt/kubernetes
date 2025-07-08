@@ -116,5 +116,34 @@ Une ligne par `Service`. Si la colonne `ENDPOINTS` est vide c'est qu'il n'y a ac
 On a maintenant une IP stable comme point d'entrée mais, bien que les IP ça soit rigolo, c'est bien plus pratique de manipuler des noms d'hôte.  
 Bonne nouvelle, Kubernetes intègre un serveur DNS interne dont le rôle est d'attribuer et résoudre des noms pour chaque `Service`. Il explique différents fournisseurs DNS compatibles Kubernetes (tout comme il existait plusieurs providers CNI) mais le plus fréquemment utilisé est probablement [coredns](https://github.com/coredns/coredns).  
 
+**Chaque service hérite automatiquement d'un nom DNS interne de la forme `nomduservice.namespace.svc.cluster.local`**.  
+Vous pouvez donc, depuis un pod du cluster, utiliser ce nom DNS plutôt que l'IP du service.  
+
+> [!NOTE]  
+> Bien que le nom DNS complet du service soit `nomduservice.namespace.svc.cluster.local` il est possible d'omettre les parties implicites. Par exemple `nomduservice.namespace` ou même, au sein du même namespace : `nomduservice`.
+
+```sh
+gon@laboitemagique:~$ kubectl exec -it olivier-6fd84b8877-stw85 -- sh
+~ $ curl http://myapp:80
+{
+  "hostname": "olivier-6fd84b8877-stw85",
+  "version": "6.9.0",
+  "revision": "fb3b01be30a3f353b221365cd3b4f9484a0885ea",
+  "color": "#34577c",
+  "logo": "https://raw.githubusercontent.com/stefanprodan/podinfo/gh-pages/cuddle_clap.gif",
+  "message": "greetings from podinfo v6.9.0",
+  "goos": "linux",
+  "goarch": "amd64",
+  "runtime": "go1.24.3",
+  "num_goroutine": "6",
+  "num_cpu": "72"
+}
+```  
+
+C'est la bonne façon d'exposer en intra-cluster et de contacter une application.  
 
 ## Autres types de services
+
+> [!NOTE]  
+> Dans tout ce chapitre, on a utilisé des `Service` de type `ClusterIP`. C'est le type par défaut, qui permet d'exposer en intra-cluster en obtenant une IP interne au cluster (d'où `ClusterIP`).  
+Il existe 2 autres types de `Service` : `NodePort` et `LoadBalancer` qui apportent en plus des fonctionnalités d'exposition extra-cluster qui seront utilisées dans le chapitre suivant.
