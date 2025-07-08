@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp
+spec:
+  selector:
+    app: olivier
+  ports:
+  - port: 80
+    targetPort: 9898

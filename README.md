@@ -19,7 +19,7 @@ Découverte et prise en main de Kubernetes
 - [Prise en main d'un cluster](kubernetes/prise-en-main/)
 - [Mon premier déploiement](kubernetes/premier-deploiement)
 - [Réseau : intro](kubernetes/reseau-intro)
-- [Réseau : exposition intra-cluster]()
+- [Réseau : exposition intra-cluster](kubernetes/reseau-intra-cluster)
 - [Réseau : exposition extra-cluster]()
 - [Persistance des données]()
 
@@ -28,3 +28,4 @@ Découverte et prise en main de Kubernetes
 - [Packaging avec Helm]()
 - [Principe du GitOps]()
 - [Implémentation GitOps avec argoCD]()
+- [Créer un cluster multi-noeud]()
