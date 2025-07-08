@@ -21,7 +21,7 @@ Découverte et prise en main de Kubernetes
 - [Réseau : intro](kubernetes/reseau-intro)
 - [Réseau : exposition intra-cluster](kubernetes/reseau-intra-cluster)
 - [Réseau : exposition extra-cluster](kubernetes/reseau-extra-cluster)
-- Persistance des données
+- [Persistance des données](kubernetes/persistance/)
 
 ## Industrialisation
 
