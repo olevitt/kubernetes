@@ -19,7 +19,7 @@ La commande `docker ps` donne différentes informations sur les conteneurs en co
 
 ## Docker logs
 
-La commande `docker logs CONTAINDERID` permet d'afficher la sortie standard d'un conteneur en cours d'exécution.
+La commande `docker logs CONTAINERID` permet d'afficher la sortie standard d'un conteneur en cours d'exécution.
 
 ## Docker kill
 

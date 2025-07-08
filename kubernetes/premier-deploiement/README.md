@@ -143,7 +143,19 @@ spec:
 
 On peut maintenant appliquer le contrat : `kubectl apply -f deployment.yaml`.  
 Pour visualiser les deployments présents dans le cluster : `kubectl get deployment`.  
-La présence du `deployment` est censée déclencher la création de pods. Vérifions : `kubectl get pods`. Il y a bien un pod qui tourne.
+La présence du `deployment` est censée déclencher la création de pods. Vérifions : `kubectl get pods`. Il y a bien un pod qui tourne.  
+
+## Cohabitation sur un même cluster  
+
+Les clusters Kubernetes sont en général partagés entre différents utilisateurs et équipes et hébergent en général des dizaines ou des centaines d'applications avec des usages et des responsables très différents.  
+Afin de permettre une cohabitation et éviter les conflits d'usage, Kubernetes propose l'utilisation de `namespaces`.  
+Chaque `namespace` correspond à un espace virtuel contenant ses propres objets.  
+Chaque objet (exemple : `Pod`, `Deployment` ...) existe au sein d'un unique namespace (par défaut `default`).  
+Pour préciser le namespace dans lequel on veut exécuter la commande : `-n nomdunamespace`.  
+Il est aussi possible de préciser le namespace par défaut dans le `kubeconfig` soit à la main soit via la commande `kubectl config set-context --current --namespace=monnamespace` (qui va modifier localement le `kubeconfig`).  
+
+> [!NOTE]
+> La plupart des objets appartiennent à un namespace (`namespace scoped`) mais certains objets sont globaux au cluster (`cluster-scoped`) comme par exemple les `nodes`. Dans ce cas le `-n` est inutile et n'a pas d'effet. 
 
 ## Debug
 
