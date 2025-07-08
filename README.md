@@ -21,11 +21,11 @@ Découverte et prise en main de Kubernetes
 - [Réseau : intro](kubernetes/reseau-intro)
 - [Réseau : exposition intra-cluster](kubernetes/reseau-intra-cluster)
 - [Réseau : exposition extra-cluster](kubernetes/reseau-extra-cluster)
-- [Persistance des données]()
+- Persistance des données
 
 ## Industrialisation
 
-- [Packaging avec Helm]()
-- [Principe du GitOps]()
-- [Implémentation GitOps avec argoCD]()
-- [Créer un cluster multi-noeud]()
+- Packaging avec Helm
+- Principe du GitOps
+- Implémentation GitOps avec argoCD
+- Créer un cluster multi-noeud
