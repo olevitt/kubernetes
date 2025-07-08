@@ -20,7 +20,7 @@ Découverte et prise en main de Kubernetes
 - [Mon premier déploiement](kubernetes/premier-deploiement)
 - [Réseau : intro](kubernetes/reseau-intro)
 - [Réseau : exposition intra-cluster](kubernetes/reseau-intra-cluster)
-- [Réseau : exposition extra-cluster]()
+- [Réseau : exposition extra-cluster](kubernetes/reseau-extra-cluster)
 - [Persistance des données]()
 
 ## Industrialisation
