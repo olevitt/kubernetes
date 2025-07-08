@@ -28,5 +28,3 @@ Découverte et prise en main de Kubernetes
 - [Packaging avec Helm]()
 - [Principe du GitOps]()
 - [Implémentation GitOps avec argoCD]()
-
-## Bonus : stockage objet avec S3
