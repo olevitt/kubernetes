@@ -160,6 +160,58 @@ Le pod podname est en bonne santé !
 
 On peut accéder aux logs via la commande `kubectl logs podname`.  
 
+Kubernetes fournit une commande `kubectl exec` équivalente à la commande `docker exec`.  
+En supposant que l'image utilisée par `podname` contienne bien l'utilitaire `sh`, on peut exécuter la commande suivante :  
+```
+kubectl exec -it podname -- sh
+```  
+ouvre un terminal intéractif dans le (premier) conteneur du pod.  
+
+## Le déploiement supervise les pods 
+
+Le déploiement s'efforce de toujours garder le nombre de pods souhaités (on parle de `replicas`, par défaut `1`) en vie. On peut tester ce comportement :  
+```
+kubectl get pods  
+kubectl delete pod podname  
+kubectl get pods
+```  
+
+> [!NOTE]
+> Il est assez courant de vouloir suivre l'évolution des pods ou d'une autre ressource en direct.  
+Kubernetes propose un paramètre `-w` (watch) à la commande `kubectl get` afin de non seulement obtenir la liste des ressources mais aussi de suivre les changements d'état en direct.  
+La commande linux `watch` (exemple : `watch kubectl get pods`) est aussi très pratique pour exécuter une commande toutes les `-n 2` secondes  
+
+## Scalabilité horizontale  
+
+On l'a vu, le déploiement s'efforce à garder `n` pods en vie en permanence avec `n` qui correspond au nombre de replicas de ce déploiement.  
+Changeons le nombre de replicas pour tester :  
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+[...]
+```  
+
+`kubectl apply -f deployment.yaml`  
+
+> [!NOTE]
+> La commande `kubectl apply` créé les ressources si elles n'existent pas déjà (`created`) ou les modifient (`configured`) si elles existent déjà
+
+Puis `kubectl get pods`  
+
+Vous pouvez ensuite redescendre le nombre de replicas et tester (spoiler : le deployment va supprimer les pods en surnombre)
+
 ## Nettoyage  
 
 Pour nettoyer tout ce qui a été créé précedemment, on peut utiliser la commande `kubectl delete`.  
