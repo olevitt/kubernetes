@@ -27,5 +27,4 @@ Découverte et prise en main de Kubernetes
 
 - [Packaging avec Helm](kubernetes/helm/)
 - [Créer un cluster multi-noeuds](kubernetes/creer-un-cluster)
-- Principe du GitOps
-- Implémentation GitOps avec argoCD
+- [GitOps (avec argoCD)](kubernetes/gitops)
