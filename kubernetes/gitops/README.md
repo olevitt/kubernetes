@@ -18,6 +18,10 @@ argoCD supporte à la fois les contrats Kubernetes bruts (fichiers `.yaml`) mais
 ## Installation d'argoCD  
 
 argoCD propose un [chart helm](https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd) facilitant l'installation.  
+Un fichier exemple de values est présenté ici : [values.yaml](values.yaml).  
+Le mot de passe doit être hashé avec [bcrypt](https://bcrypt-generator.com/). Le mot de passe présent dans le fichier exemple est `password`.  
+Le login par défaut sur argocd est `admin`.  
+
 argoCD est découpé en différents pods :  
     * argocd-application-controller : moteur de logique argocd (celui qui mène la danse)
     * argocd-dex-server : moteur d'authentification

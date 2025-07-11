@@ -1,0 +1,13 @@
+server:
+  ingress:
+    annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    enabled: true
+    hostname: argocd.intech.levitt.fr
+    extraTls:
+      - hosts:
+          - argocd.intech.levitt.fr
+configs:
+  secret:
+    argocdServerAdminPassword: "$2a$12$XT5.ZkL0G3sRnL59QyMACOBmf018VHaLkmXBJZvRIkemhSGCChgn6"
+    argocdServerAdminPasswordMtime: "2006-01-02T15:04:05Z"
